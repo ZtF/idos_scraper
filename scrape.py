@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-
 import urllib2
 import urllib
 from datetime import datetime
@@ -20,7 +19,6 @@ def get_path(start='', end='', date=None, time=None, resource=None, default_reso
     date: dd.mm.yyyy
     time: HH:MM
     """
-
     date_format = '%d.%m.%Y'
     if date is None:
         date = datetime.now().strftime(date_format)
@@ -41,7 +39,6 @@ def get_path(start='', end='', date=None, time=None, resource=None, default_reso
         'cmdSearch': u'Hledat'
     }
 
-
     if resource is None:
         request = urllib2.Request(base_url+default_resource, urllib.urlencode(data), headers)
     else:
@@ -61,7 +58,6 @@ def get_path(start='', end='', date=None, time=None, resource=None, default_reso
     response['path'] = parse_path(doc)
 
     return response
-
 
 
 def parse_path(doc, expand_details=False):
@@ -108,4 +104,3 @@ def get_detail(resource):
             marked = False
         detail.append({'name': name.text, 'arrival': arrival.text, 'marked': marked})
     return detail
-get_path('Haje', 'Skalka')
